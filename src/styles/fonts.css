@@ -1,0 +1,45 @@
+@font-face {
+  font-family: mixta-ess-sharpit-light;
+  src: url(../../public/fonts/mixta-ess-sharpit-light-webfont.DHOzVYr-.woff2);
+}
+@font-face {
+  font-family: mixta-ess-sharpit-regular;
+  src: url(../../public/fonts/mixta-ess-sharpit-regular-webfont.DBmJbHe1.woff2);
+}
+@font-face {
+  font-family: vvds-fifties-exp-light;
+  src: url(../../public/fonts/vvds-fifties-exp-light-webfont.COIh7yOV.woff2);
+}
+@font-face {
+  font-family: vvds-fifties-exp-med;
+  src: url(../../public/fonts/vvds-fifties-exp-med-webfont.D6-YSotC.woff2);
+}
+@font-face {
+  font-family: vvds-fifties-exp-reg;
+  src: url(../../public/fonts/vvds-fifties-exp-reg-webfont.B0OLSwyI.woff2);
+}
+
+
+.mix_light {
+  font-family: mixta-ess-sharpit-light;
+}
+.mix_reg {
+  font-family: mixta-ess-sharpit-regular;
+}
+.vvds_light {
+  font-family: vvds-fifties-exp-light;
+}
+.vvds_med {
+  font-family: vvds-fifties-exp-med;
+}
+.vvds_reg {
+  font-family: vvds-fifties-exp-reg;
+}
+p {
+  cursor: default;
+  font-family: mixta-ess-sharpit-regular;
+}
+h2 , .fot {
+  cursor: default;
+  font-family: vvds-fifties-exp-reg;
+}
