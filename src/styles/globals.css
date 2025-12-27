@@ -96,3 +96,10 @@ body::-webkit-scrollbar {
 .gallery_container {
   pointer-events: none;
 }
+.not_active{
+  filter: blur(.5rem) !important;
+}
+.normal_glry_img{
+  filter: blur(0px);
+  transition: all 0.3s ease;
+}

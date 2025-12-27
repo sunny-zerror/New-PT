@@ -1,91 +1,6 @@
-"use client";
-
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
-
-/* ================= SHADERS ================= */
-
-const vertexShader = `
-varying vec2 vUv;
-
-uniform vec2 uMouse;
-uniform float uStrength;
-uniform float uTime;
-uniform vec2 uRippleOrigin;
-uniform float uRippleStart;
-uniform vec2 uResolution;
-
-void main() {
-  vUv = uv;
-
-  vec2 aspect = vec2(uResolution.x / uResolution.y, 1.0);
-  vec2 dir = (uv - uMouse) * aspect;
-  float dist = length(dir);
-
-  vec3 displaced = position;
-
-  if (uStrength > 0.001) {
-    float bulge = smoothstep(0.4, 0.0, dist) * uStrength;
-    displaced += normalize(vec3(dir, 0.0)) * bulge * 0.2;
-  }
-
-  float rippleAge = uTime - uRippleStart;
-  if (rippleAge > 0.0 && rippleAge < 1.5) {
-    float rippleRadius = rippleAge * 0.4;
-    float d = length((uv - uRippleOrigin) * aspect);
-    float wave = sin(35.0 * (d - rippleRadius)) * 0.02;
-    float fade = 1.0 - smoothstep(0.0, 1.5, rippleAge);
-    float mask = smoothstep(rippleRadius + 0.1, rippleRadius, d);
-    displaced.z += wave * mask * fade;
-  }
-
-  gl_Position = projectionMatrix * modelViewMatrix * vec4(displaced, 1.0);
-}
-`;
-
-const fragmentShader = `
-uniform sampler2D uTexture;
-uniform vec2 uMouse;
-uniform float uStrength;
-uniform float uTime;
-uniform vec2 uRippleOrigin;
-uniform float uRippleStart;
-uniform float uBrightness;
-uniform vec2 uResolution;
-
-varying vec2 vUv;
-
-void main() {
-  vec2 aspect = vec2(uResolution.x / uResolution.y, 1.0);
-  vec2 dir = (vUv - uMouse) * aspect;
-  float dist = length(dir);
-
-  vec2 distorted = vUv;
-
-  if (uStrength > 0.001) {
-    float bulge = smoothstep(0.4, 0.0, dist) * uStrength;
-    distorted -= normalize(dir) * bulge * 0.05 / aspect;
-  }
-
-  float rippleAge = uTime - uRippleStart;
-  if (rippleAge > 0.0 && rippleAge < 1.0) {
-    float rippleRadius = rippleAge * 0.4;
-    float d = length((vUv - uRippleOrigin) * aspect);
-    float wave = sin(35.0 * (d - rippleRadius)) * 0.02;
-    float fade = 1.0 - smoothstep(0.0, 1.0, rippleAge);
-    float mask = smoothstep(rippleRadius + 0.1, rippleRadius, d);
-    distorted += normalize(dir) * wave * mask * fade / aspect;
-  }
-
-  vec4 color = texture2D(uTexture, distorted);
-  if (color.a < 0.01) discard;
-
-  color.rgb *= uBrightness;
-  gl_FragColor = color;
-}
-`;
-
-/* ================= COMPONENT ================= */
+import { vertexShader, fragmentShader } from './BulgeImageShader';
 
 export default function BulgeImageThree({ imageUrl }) {
   const containerRef = useRef(null);
@@ -93,7 +8,6 @@ export default function BulgeImageThree({ imageUrl }) {
   useEffect(() => {
     if (!containerRef.current) return;
 
-    /* ---------- Scene ---------- */
     const scene = new THREE.Scene();
 
     const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 10);
@@ -103,11 +17,9 @@ export default function BulgeImageThree({ imageUrl }) {
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     containerRef.current.appendChild(renderer.domElement);
 
-    /* ---------- Mesh placeholders ---------- */
     let mesh;
     let imageAspect = 1;
 
-    /* ---------- Uniforms ---------- */
     const uniforms = {
       uTexture: { value: null },
       uMouse: { value: new THREE.Vector2(0.5, 0.5) },
@@ -119,7 +31,6 @@ export default function BulgeImageThree({ imageUrl }) {
       uResolution: { value: new THREE.Vector2(1, 1) }
     };
 
-    /* ---------- Material ---------- */
     const material = new THREE.ShaderMaterial({
       uniforms,
       vertexShader,
@@ -127,7 +38,6 @@ export default function BulgeImageThree({ imageUrl }) {
       transparent: true
     });
 
-    /* ---------- Size calculation ---------- */
     const getPlaneSize = () => {
       const w = containerRef.current.clientWidth;
       const h = containerRef.current.clientHeight || w / imageAspect;
@@ -148,7 +58,6 @@ export default function BulgeImageThree({ imageUrl }) {
       return { planeWidth, planeHeight };
     };
 
-    /* ---------- Load Texture ---------- */
     const loader = new THREE.TextureLoader();
     loader.load(imageUrl, (texture) => {
       texture.minFilter = THREE.LinearFilter;
@@ -170,7 +79,6 @@ export default function BulgeImageThree({ imageUrl }) {
       scene.add(mesh);
     });
 
-    /* ---------- Resize ---------- */
     const resize = () => {
       if (!mesh) return;
 
@@ -189,7 +97,6 @@ export default function BulgeImageThree({ imageUrl }) {
 
     window.addEventListener("resize", resize);
 
-    /* ---------- Mouse Interaction ---------- */
     const raycaster = new THREE.Raycaster();
     const mouse = new THREE.Vector2();
 
@@ -226,7 +133,6 @@ export default function BulgeImageThree({ imageUrl }) {
 
     renderer.domElement.addEventListener("mousemove", onMouseMove);
 
-    /* ---------- Animate ---------- */
     const clock = new THREE.Clock();
 
     const animate = () => {
@@ -247,7 +153,6 @@ export default function BulgeImageThree({ imageUrl }) {
 
     animate();
 
-    /* ---------- Cleanup ---------- */
     return () => {
       window.removeEventListener("resize", resize);
       renderer.domElement.removeEventListener("mousemove", onMouseMove);
@@ -260,7 +165,7 @@ export default function BulgeImageThree({ imageUrl }) {
   return (
     <div
       ref={containerRef}
-      style={{ width: "94.8%", height: "100%" }}
+      style={{ width: "96%", height: "100%" }}
     />
   );
 }

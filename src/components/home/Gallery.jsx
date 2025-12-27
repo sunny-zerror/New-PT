@@ -18,9 +18,9 @@ const Gallery = () => {
         parallaxRef.current = new Parallax(sceneRef.current, {
             relativeInput: true,
             hoverOnly: true,
-            frictionX: 0.08, 
+            frictionX: 0.08,
             frictionY: 0.1,
-            scalarX: 1000,   
+            scalarX: 1000,
             scalarY: 450,
         });
 
@@ -48,45 +48,90 @@ const Gallery = () => {
         }
     }, [activeIndex]);
 
+    useEffect(() => {
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: ".wht_built_pren",
+                start: "top 60%",
+                toggleActions: "play none none reverse",
+            },
+        })
+        tl.fromTo(
+            ".counter",
+            { innerText: 0 },
+            {
+                innerText: (i, el) => el.dataset.count,
+                duration: 1.2,
+                ease: "power2.out",
+                snap: { innerText: 1 },
+                onUpdate: function () {
+                    this.targets().forEach(el => {
+                        el.innerHTML = `${Math.round(el.innerText)}+`
+                    })
+                },
+            },
+        )
+        tl.to(".tin_line", {
+            width: "100%",
+            ease: "expo.out",
+            duration: 1,
+            stagger: 0.2
+        }, "<")
+        tl.to(".tin_line_ver", {
+            height: "100%",
+            ease: "expo.out",
+            duration: 1,
+            stagger: 0.15
+        }, "<+=0.5")
+    }, [])
+
+
 
     return (
         <>
-            <div className="w-full  h-screen gap-y-12 text-[#18293A] flex justify-center px-20 flex-col ">
+            <div className=" wht_built_pren w-full  h-screen gap-y-12 bg-[#18293A] text-white flex justify-center px-20 flex-col ">
                 <h2 className="uppercase text-2xl">What I’ve built</h2>
-                <div className="w-full grid grid-cols-2 pt-3 border-t border-[#18293A]">
+                <div className="w-full relative grid grid-cols-2 pt-3 ">
+                    <div className="tin_line w-0  absolute h-px bg-white top-0 left-0"></div>
                     <div className="">
                         <h2 className="text-xl vvds_light">Scaled and launched teams across industries.</h2>
-                        <h2 className="text-[10vw]">150+</h2>
+                        <h2 className="text-[10vw] counter" data-count="150"> 0+</h2>
                     </div>
                     <div className="">
                         <h2 className="text-xl vvds_light">Built brands from strategy to launch.</h2>
-                        <h2 className="text-[10vw] ">4+</h2>
+                        <h2 className="text-[10vw] counter " data-count="4">  0+</h2>
                     </div>
                 </div>
 
-                <div className="w-full relative z-20 text-xl vvds_light grid grid-cols-4 border-t border-[#18293A]">
-                    <div className="w-full border-r p-12  ">
+                <div className="w-full relative z-20 text-xl vvds_light grid grid-cols-4 ">
+                    <div className="tin_line w-0  absolute h-px bg-white top-0 left-0"></div>
+                    <div className="w-full relative  p-12  ">
+                        <div className="tin_line_ver h-0  absolute w-px bg-white top-0 right-0"></div>
                         <h2>25+</h2>
                         <h2 className="vvds_light">Team Members Led</h2>
                     </div>
-                    <div className="w-full border-r p-12  ">
+                    <div className="w-full relative  p-12  ">
+                        <div className="tin_line_ver h-0  absolute w-px bg-white top-0 right-0"></div>
                         <h2>25+</h2>
                         <h2 className="vvds_light">Team Members Led</h2>
                     </div>
-                    <div className="w-full border-r p-12  ">
+                    <div className="w-full relative  p-12  ">
+                        <div className="tin_line_ver h-0  absolute w-px bg-white top-0 right-0"></div>
                         <h2>25+</h2>
                         <h2 className="vvds_light">Team Members Led</h2>
                     </div>
-                    <div className="w-full  p-12  ">
+                    <div className="w-full relative  p-12  ">
                         <h2>25+</h2>
                         <h2 className="vvds_light">Team Members Led</h2>
                     </div>
                 </div>
+
             </div>
-            <div ref={containerRef} className="gallery_container">
+
+            <div ref={containerRef} className="gallery_container bg-[#18293A]">
                 <div
                     ref={textBoxRef}
-                    className="gallry_txt_box text-[#18293A] pointer-events-none fixed  uppercase text-center center text-[5rem] leading-18 z-20 w-full top-1/2 -translate-y-1/2 opacity-0"
+                    className="gallry_txt_box text-[#ffffff] pointer-events-none fixed  uppercase text-center center text-[5rem] leading-18 z-20 w-full top-1/2 -translate-y-1/2 opacity-0"
                 >
                     {activeIndex !== null && (
                         <div className="w-[40%] ">
@@ -115,19 +160,18 @@ const Gallery = () => {
                                     onMouseLeave={() => setActiveIndex(null)}
                                 >
                                     <div
-                                        className={`gallery_item group hover:scale-105 hover:rounded-sm overflow-hidden transition-all duration-300 aspect-square`}
+                                        className={`gallery_item group hover:scale-105 rounded-sm overflow-hidden transition-all duration-300 aspect-square`}
                                         style={{
                                             top: item.top,
                                             left: item.left,
                                         }}
                                     >
-                                        {/* <div className="blue_overlay transition-all duration-300 group-hover:opacity-0 opacity-50 w-full h-full bg-[#252525] absolute top-0 left-0 z-10"></div> */}
                                         <Image
                                             width={300}
                                             height={400}
                                             src={item.img}
                                             alt={item.title}
-                                            className="cover brightness-[.6] group-hover:brightness-100 transition-all duration-300 group-hover:scale-110"
+                                            className={` ${activeIndex && activeIndex !== i && "not_active"} normal_glry_img cover group-hover:scale-110`}
                                         />
                                     </div>
                                 </a>

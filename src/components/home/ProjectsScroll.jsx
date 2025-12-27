@@ -71,7 +71,7 @@ const ProjectsScroll = () => {
             scrollTrigger: {
                 trigger: containerRef.current,
                 start: "top top",
-                end: "+=300%",
+                end: "+=500%",
                 start: "top bottom",
                 // markers: true,
                 scrub: true,
@@ -105,12 +105,12 @@ const ProjectsScroll = () => {
         tl.to(project_center_txt.words, {
             opacity: 1,
             duration:0.5,
-            stagger: 0.1,
+            stagger: 0.8,
         })
         cards.forEach((card, i) => {
             const dir = directions[i % directions.length];
 
-            const delay = i * 0.05;
+            const delay = i * 0.4;
 
             tl.to(
                 card,
@@ -119,6 +119,7 @@ const ProjectsScroll = () => {
                     y: dir.y * vh * 0.6,
                     z: 2000,
                     scale: 1.8,
+                    duration:3,
                     rotationY: gsap.utils.random(-10, 10),
                     rotationX: gsap.utils.random(-6, 6),
                     ease: "none",
@@ -134,7 +135,7 @@ const ProjectsScroll = () => {
         tl.to(frameRef, {
             current: totalFrames - 1,
             snap: 'current',
-            duration: 4,
+            duration: 6,
             onUpdate: () => {
                 drawFrame(Math.round(frameRef.current));
             }

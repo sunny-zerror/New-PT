@@ -175,6 +175,11 @@ const Hero = () => {
       duration: 3,
     }, "pin3");
 
+    tl.to(".logo_div canvas", {
+      display: "none",
+      duration: .1,
+    });
+
   }, [])
 
   useEffect(() => {
@@ -211,7 +216,7 @@ const Hero = () => {
           <div
             className="animate_logo_div_parent absolute w-full h-fit ">
             <div className=" animate_logo_div  center  h-[16vw]   w-full">
-              <img className="w-[94.8%]" src="/logos/Logo_Dark.svg" alt="" />
+              <img className="w-[96%]" src="/logos/logo_blue.png" alt="" />
             </div>
 
             <div className=" text-[#18293A] short_desc  w-full px-10 py-4  overflow-hidden text-[16px] flex items-center justify-between">
@@ -227,7 +232,7 @@ const Hero = () => {
             <div className=" logo_div  center  h-[16vw]   w-full">
               {/* <img className="w-[94.8%]" src="/logos/Logo_Dark.svg" alt="" /> */}
               {/* <ProjectCardImage imgUrl="/logos/Logo_Dark.png" /> */}
-              <BulgeImageThree imageUrl="/logos/Logo_Dark.png" />
+              <BulgeImageThree imageUrl="/logos/logo_blue.png" />
             </div>
 
             <div className=" text-[#18293A] short_desc w-full px-10 py-4  overflow-hidden text-[16px] flex items-center justify-between">
@@ -261,9 +266,12 @@ const Hero = () => {
           className="clip_container overflow-hidden absolute top-0 left-1/2 translate-x-[-50%] w-full h-full center "
         >
 
-          <img
-            className="object-cover w-full h-full"
-            src="/images/hero_bg.png"
+          <video
+            loop
+            autoPlay
+            muted
+            className="object-cover w-full brightness-50 h-full"
+            src="/videos/bg_vid.mp4"
             alt=""
           />
         </div>
@@ -275,9 +283,9 @@ const Hero = () => {
             <div className=" logo_div  center  h-[16vw]   w-full">
               {/* <img className="w-[94.8%]" src="/logos/Logo_Dark.svg" alt="" /> */}
               {/* <ProjectCardImage imgUrl="/logos/Logo_Dark.png" /> */}
-              <BulgeImageThree imageUrl="/logos/Logo_Dark.png" />
+              <BulgeImageThree imageUrl="/logos/Logo_Light.png" />
             </div>
-            <div className=" short_desc w-full px-10 py-4  overflow-hidden text-[16px] flex items-center justify-between">
+            <div className=" text-white short_desc w-full px-10 py-4  overflow-hidden text-[16px] flex items-center justify-between">
               <p>Where clarity drives creativity</p>
               <h2>Brand Systems Architect</h2>
               <p>From insight to impact</p>
@@ -287,7 +295,7 @@ const Hero = () => {
         </div>
         <div
           className=" profile_pic absolute z-[8] bottom-[-100%] absolute_x_center w-[40%]  h-[80vh]">
-          <img className='object-cover brightness-[1] grayscale-100 w-full h-full' src="/images/piran_pic_new.webp" alt="" />
+          <img className='object-cover brightness-[1] grayscale-[100] w-full h-full' src="/images/piran_pic_new.webp" alt="" />
         </div>
 
         <div className=" slide_box z-[10] -translate-x-1/2 aspect-square w-[26vw] p-10 text-[1.2vw] absolute text-[#18293A] h-[30vw] bg-[#FFFBF3] bottom-0  left-[125%] flex flex-col justify-between items-center  text-center ">

@@ -32,9 +32,9 @@ const AboutWork = () => {
             },
         })
         paralex_tl.to(".split_txt_about", {
-            y: 350,
+            y: 500,
             ease: "linear",
-            opacity: 0.2,
+            opacity: 0,
         })
 
         const tl2 = gsap.timeline({
@@ -77,7 +77,7 @@ const AboutWork = () => {
 
     return (
         <>
-            <div className=" about_work_paren overflow-hidden relative center w-full h-screen">
+            <div className=" about_work_paren  relative center w-full h-screen">
                 <div className="split_txt_about w-full relative h-screen">
 
                     {/* <h2 className='absolute top-1/2 -translate-y-1/2 z-[12] left-1/2 text-3xl mix-blend-difference font-semibold text-[#ffffff] -translate-x-1/2'>MY APPROACH</h2> */}
@@ -105,7 +105,7 @@ const AboutWork = () => {
                     </div>
                 </div>
             </div>
-            <div className="spn_slide_paren relative py-[10vw]  w-full  z-10 bg-[#FFFBF3] ">
+            <div className="spn_slide_paren relative py-[10vw]  w-full  z-10 bg-transparent ">
                 <div className="  spn_slide    center w-[100%] ">
                     <h2 className='text-[#18293A] text-[3.2vw] w-[72%]  text-justify  leading-none'>
                         <span className='spn_1'>

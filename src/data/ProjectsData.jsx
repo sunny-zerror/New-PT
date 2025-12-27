@@ -2,67 +2,57 @@ export const projectsData = [
   {
     title: "Point Of ",
     service: "Founder",
-    image: "/images/Projects/PointOf.webp",
+    image: "/images/Projects/Point_of.webp",
   },
   {
     title: "JBL",
     service: "Community Management",
-    image: "/images/Projects/jbl.webp",
-  },
-  {
-    title: "House Of Namah",
-    service: "Branding",
-    image: "/images/Projects/namah.webp",
+    image: "/images/Projects/JBL.webp",
   },
   {
     title: "Kvar by Design",
     service: "Branding",
-    image: "/images/Projects/kvar.webp",
+    image: "/images/Projects/KVAR.webp",
   },
   {
     title: "Plot Point",
     service: "Branding",
-    image: "/images/Projects/plotPoint.webp",
+    image: "/images/Projects/Plot_point.webp",
   },
   {
     title: "Wealthfusion",
     service: "Branding",
-    image: "/images/Projects/wealthFusion.webp",
+    image: "/images/Projects/Wealth_fusion.webp",
   },
   {
     title: "Jadau",
     service: "Branding",
-    image: "/images/Projects/jadau.webp",
+    image: "/images/Projects/JADAU.webp",
   },
   {
     title: "Label Ritu Kumar",
     service: "Social Media",
-    image: "/images/Projects/labelRituKumar.webp",
+    image: "/images/Projects/Label_ritu_kumar.webp",
   },
   {
     title: "Freddie City",
     service: "Social Media",
-    image: "/images/Projects/freddieCity.webp",
+    image: "/images/Projects/Freddie.webp",
   },
   {
     title: "Podar International School",
     service: "Influencer Marketing",
-    image: "/images/Projects/podarSchool.webp",
+    image: "/images/Projects/Podar.webp",
   },
   {
     title: "Goodrich",
     service: "Branding",
-    image: "/images/Projects/goodrich.webp",
-  },
-  {
-    title: "One Less",
-    service: "Influencer Marketing",
-    image: "/images/Projects/oneLess.webp",
+    image: "/images/Projects/Good_rich.webp",
   },
   {
     title: "Pepsi India",
     service: "Social Media",
-    image: "/images/Projects/pepsi.webp",
+    image: "/images/Projects/Pepsi.webp",
   },
   {
     title: "Voltas",
@@ -77,6 +67,6 @@ export const projectsData = [
   {
     title: "Poonawala Towers ",
     service: "",
-    image: "/images/Projects/Poonwala.webp",
+    image: "/images/Projects/Poonawalla.webp",
   },
 ];
