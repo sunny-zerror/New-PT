@@ -33,7 +33,7 @@ const Header = () => {
 
   return (
     <nav>
-      <div className=" fixed  block  w-56 z-[999] p-5">
+      <div className=" fixed w-fit  block  w-56 z-[999] p-5">
         <div
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           className=" cursor-pointer block overflow-hidden">
@@ -50,15 +50,15 @@ const Header = () => {
       <div className="absolute top-0 w-full z-[16] flex items-center justify-end p-3 lg:p-5">
         <div className=" capitalize flex text-sm lg:text-base flex-col text-end items-end">
           {["Instagram", "LinkedIn", "Behance"].map((label, i) => (
-            <div key={i} className=" w-fit overflow-hidden group flex gap-1 items-center justify-end cursor-pointer relative transition duration-300">
+            <div key={i} className=" w-fit h-fit  overflow-hidden group flex gap-1 items-center justify-end cursor-pointer relative transition duration-300">
               <h2
                 key={label}
                 className='cursor-pointer text-[#18293A] lin opacity-0  '
               >
-                <span className=' group-hover:w-[100%] w-0 cursor-pointer transition-all rounded-full duration-300 absolute h-[2px] bg-[text-[#18293A]] bottom-0' ></span>
+                <span className=' group-hover:w-[100%] w-0 cursor-pointer transition-all rounded-full duration-300 absolute h-[2px] bg-[#18293A] bottom-0' ></span>
                 {label}
               </h2>
-              <img className='w-3 lin opacity-0  ' src="https://www.archi-malinstudio.com/img/arrow.svg" alt="" />
+              <img className='w-3 lin opacity-0 cursor-pointer  ' src="https://www.archi-malinstudio.com/img/arrow.svg" alt="" />
             </div>
           ))}
         </div>
