@@ -3,8 +3,10 @@ import Parallax from "parallax-js";
 import gsap from "gsap";
 import { galleryData } from "@/data/galleryData";
 import Image from "next/image";
+import InfiniteCarousel from "./InfiniteCarousel";
 
 const Gallery = () => {
+    const [openGallerySwiper, setOpenGallerySwiper] = useState(false)
     const containerRef = useRef(null);
     const sceneRef = useRef(null);
     const textBoxRef = useRef(null);
@@ -88,7 +90,10 @@ const Gallery = () => {
 
 
     return (
-        <>
+        <>  
+
+            <InfiniteCarousel openGallerySwiper={openGallerySwiper} setOpenGallerySwiper={setOpenGallerySwiper}/>
+
             <div className=" wht_built_pren w-full  h-screen gap-y-12 bg-[#18293A] text-white flex justify-center px-20 flex-col ">
                 <h2 className="uppercase text-2xl">What I’ve built</h2>
                 <div className="w-full relative grid grid-cols-2 pt-3 ">
@@ -156,6 +161,7 @@ const Gallery = () => {
                                 <a
                                     key={i}
                                     className="relative  p-[12vw] shrink-0"
+                                    onClick={()=>setOpenGallerySwiper(true)}
                                     onMouseEnter={() => setActiveIndex(i)}
                                     onMouseLeave={() => setActiveIndex(null)}
                                 >

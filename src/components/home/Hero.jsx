@@ -1,4 +1,3 @@
-;
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
@@ -270,7 +269,7 @@ const Hero = () => {
             loop
             autoPlay
             muted
-            className="object-cover w-full brightness-50 h-full"
+            className="object-cover w-full brightness-100 grayscale-100 h-full"
             src="/videos/bg_vid.mp4"
             alt=""
           />
