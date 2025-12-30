@@ -172,15 +172,15 @@ const ProjectsScroll = () => {
                 The machinery of my design
             </h2>
             <div className="cards-stage h-screen w-full flex items-center justify-center">
-                {projectsData.map((item, i) => (
+                {projectsData?.map((item, i) => (
                     <div
                         key={i}
                         className="scroll-card absolute w-[35vw] aspect-square"
                     >
                         <img
-                            src={item.image}
+                            src={item?.image}
                             className="w-full h-full object-cover"
-                            alt=""
+                            alt="loading"
                         />
                     </div>
                 ))}

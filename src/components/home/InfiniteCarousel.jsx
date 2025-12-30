@@ -173,7 +173,7 @@ const InfiniteCarousel = ({ openGallerySwiper, setOpenGallerySwiper }) => {
               transform: `translate3d(${-renderScroll}px, 0%, 0)`
             }}
           >
-            {slides.map((img, i) => (
+            {slides?.map((img, i) => (
               <div
                 key={i}
                 style={{
@@ -182,10 +182,8 @@ const InfiniteCarousel = ({ openGallerySwiper, setOpenGallerySwiper }) => {
                 }}
                 className={` slide_width opacity-0 scale-90 translate-y-10  shrink-0   overflow-hidden `}
               >
-                <Image
-                  width={600}
-                  height={750}
-                  src={img.image}
+                <img
+                  src={img?.image}
                   className="w-full  aspect-[4/5] object-cover pointer-events-none"
                   draggable={false}
                 />
