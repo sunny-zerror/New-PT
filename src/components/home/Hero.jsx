@@ -103,7 +103,7 @@ const Hero = () => {
       scrollTrigger: {
         trigger: main_Ref.current,
         start: "top top",
-        end: "+=300%",
+        end: "+=400%",
         scrub: true,
         pin: true,
         // markers: true,
@@ -116,67 +116,49 @@ const Hero = () => {
       y: 100
     })
 
-
     tl.to([logoRef.current, logoRef2.current], {
       top: 20,
-      duration: 1,
     }, "pin");
 
     tl.to(clipRef.current, {
       clipPath: "polygon(0 0, 100% 0, 100% 0%, 0 0%)",
-      ease: "ease.out",
-      duration: 1,
     }, "pin");
 
     tl.to(".profile_pic", {
       bottom: "0%",
-      duration: 1,
     });
-
-    tl.to(".slide_box", {
-      left: "50%",
-      duration: 1,
-    });
-
-    tl.to(".slide_box", {
-      left: "12.5%",
-      duration: 1.5,
-    }, "pin2");
+    tl.to(".hero_vid", {
+      filter: "brightness(.2) grayScale(1)",
+    }, "<");
 
     tl.to(".profile_pic", {
       height: "100vh",
       width: "100%",
-      duration: 1.5,
     }, "pin2");
-    tl.to(".profile_pic img", {
-      filter: "brightness(.5) grayScale(1)",
-      duration: 1.5,
-    }, "pin2");
+
 
     tl.to([logoRef.current, logoRef2.current, ".log_par"], {
-      top: "-65vh",
-      duration: 1.5,
+      top: "-25vh",
     }, "pin2");
 
-    tl.to(".logo_image", {
-      y: 0,
-      opacity: 1,
-      duration: 1,
-    }, "pin3");
-
     tl.to(".slide_box", {
-      left: "-13%",
-      duration: 1,
-    }, "pin3");
+      left: "-30vw",
+      duration: 2
+    });
+    
+    tl.to(".profile_pic", {
+      filter: "brightness(.7) grayScale(1)",
+    });
 
     tl.to(".slide_box_upside", {
       bottom: "0%",
-      duration: 3,
-    }, "pin3");
+      duration: 2
+    }, "<");
+
 
     tl.to(".logo_div canvas", {
       display: "none",
-      duration: .1,
+      duration:0.1,
     });
 
   }, [])
@@ -269,7 +251,7 @@ const Hero = () => {
             loop
             autoPlay
             muted
-            className="object-cover w-full brightness-100 grayscale-100 h-full"
+            className=" hero_vid object-cover w-full brightness-[1.1] grayscale-100 h-full"
             src="/videos/bg_vid.mp4"
             alt=""
           />
@@ -293,11 +275,11 @@ const Hero = () => {
           </div>
         </div>
         <div
-          className=" profile_pic absolute z-[8] bottom-[-100%] absolute_x_center w-[40%]  h-[80vh]">
+          className=" profile_pic brightness-100 absolute z-[8] bottom-[-100%] absolute_x_center w-[40%]  h-[72vh]">
           <img className='object-cover brightness-[1] grayscale-[100] w-full h-full' src="/images/piran_pic_new.webp" alt="" />
         </div>
 
-        <div className=" slide_box z-[10] -translate-x-1/2 aspect-square w-[26vw] p-10 text-[1.2vw] absolute text-[#18293A] h-[30vw] bg-[#FFFBF3] bottom-0  left-[125%] flex flex-col justify-between items-center  text-center ">
+        <div className=" slide_box z-[10]  aspect-square w-[26vw] p-10 text-[1.2vw] absolute text-[#18293A] h-[30vw] bg-[#FFFBF3] bottom-0 right-[-27vw] flex flex-col justify-between items-center  text-center ">
           <img src="	https://www.archi-malinstudio.com/_vercel/image?url=%2Fimg%2Fpicto%2Fflocon.svg&w=320&q=100" alt="" />
           <div className=" center flex-col gap-5">
             <p className=' xl:text-3xl 2xl:text-4xl mix_light'>
@@ -308,14 +290,14 @@ const Hero = () => {
           <h2 className='text-xl'>The journey starts here.</h2>
         </div>
 
-        <div className=" slide_box_upside  w-[40vw] z-[10] absolute text-white   bottom-[-150%]  right-5 ">
-          <h2 className='text-xl mb-6'>My Philosophy on Brands</h2>
+        <div className=" slide_box_upside  w-[38vw] z-[10] absolute text-white   bottom-[-150%]  left-10 ">
+          <h2 className='uppercase text-2xl vvds_light mb-6'>My Philosophy on Brands</h2>
           <h2 className='text-xl'>Brand as a Living System</h2>
-          <p className='text-4xl leading-none mb-10 mix_light'>A brand isn’t just a logo or product it’s a living, evolving ecosystem made up of stories, values, and people. I help brands grow by staying connected to their true purpose while adapting to their audience.</p>
+          <p className='text-3xl leading-none mb-10 mix_light'>A brand isn’t just a logo or product it’s a living, evolving ecosystem made up of stories, values, and people. I help brands grow by staying connected to their true purpose while adapting to their audience.</p>
           <h2 className='text-xl'>Story and Structure</h2>
-          <p className='text-4xl leading-none mb-10 mix_light'>Story gives meaning; structure drives progress. I combine emotional storytelling with smart systems so brands don’t just exist, they move forward with intention.</p>
+          <p className='text-3xl leading-none mb-10 mix_light'>Story gives meaning; structure drives progress. I combine emotional storytelling with smart systems so brands don’t just exist, they move forward with intention.</p>
           <h2 className='text-xl'>Ethical Innovation</h2>
-          <p className='text-4xl leading-none mb-10 mix_light'>Innovation without purpose is noise. I build with awareness of people, culture and impact ensuring growth that lasts.</p>
+          <p className='text-3xl leading-none mb-10 mix_light'>Innovation without purpose is noise. I build with awareness of people, culture and impact ensuring growth that lasts.</p>
         </div>
       </div>
     </>

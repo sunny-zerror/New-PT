@@ -1,4 +1,5 @@
-import { projectsData } from '@/data/ProjectsData'
+import { carouselData } from '@/data/carouselData'
+import { RiCloseLine } from '@remixicon/react'
 import gsap from 'gsap'
 import SplitText from 'gsap/dist/SplitText'
 import Image from 'next/image'
@@ -17,12 +18,12 @@ const InfiniteCarousel = ({ openGallerySwiper, setOpenGallerySwiper }) => {
   const itemWidth = 300
   const gap = 2
   const totalItemWidth = itemWidth + gap
-  const totalWidth = totalItemWidth * projectsData.length
+  const totalWidth = totalItemWidth * carouselData.length
 
   const slides = [
-    ...projectsData,
-    ...projectsData,
-    ...projectsData
+    ...carouselData,
+    ...carouselData,
+    ...carouselData
   ]
 
   useEffect(() => {
@@ -153,8 +154,8 @@ const InfiniteCarousel = ({ openGallerySwiper, setOpenGallerySwiper }) => {
     <div className=" gallery_swiper_paren  pointer-events-none opacity-0 fixed top-0 left-0   z-[999] inset-0 bg-[#fffbf3] text-[#18293A] overflow-hidden flex flex-col  justify-between">
       <div className=''>
         <div className="w-full flex items-center justify-between p-2">
-          <h2 className='text-2xl spli_txt vvds_light'>01 / 30</h2>
-          <button onClick={() => setOpenGallerySwiper(false)} className='w-6 cursor-pointer'><img src="/icons/close_black_thin.png" alt="" /></button>
+          <h2 className='text-2xl spli_txt '>01 / 30</h2>
+          <button onClick={() => setOpenGallerySwiper(false)} className='w-6 cursor-pointer'><RiCloseLine size={30}/></button>
         </div>
         <div
           ref={carouselRef}
@@ -182,18 +183,29 @@ const InfiniteCarousel = ({ openGallerySwiper, setOpenGallerySwiper }) => {
                 }}
                 className={` slide_width opacity-0 scale-90 translate-y-10  shrink-0   overflow-hidden `}
               >
-                <img
+                <Image
+                  width={200}
+                  height={250}
+                  alt={img?.title}
                   src={img?.image}
                   className="w-full  aspect-[4/5] object-cover pointer-events-none"
                   draggable={false}
                 />
-                <h2 className='uppercase'>{img.title}</h2>
+                <h2 className='capitalize text-xl vvds_light'>{img.title}</h2>
               </div>
             ))}
           </div>
         </div>
       </div>
-      <div className="w-full flex items-center justify-center">
+      <div className="w-full px-5 flex items-end justify-between">
+        <button className=' cursor-pointer flex gap-2 hover:gap-3 transition-all duration-300 pb-10 uppercase '>
+          <p className="cursor-pointer!">
+          ←
+          </p>
+          <h2 className='cursor-pointer!'>
+          Prev
+          </h2>
+        </button>
         <p
           className="leading-none spli_txt  mix_light text-center"
           style={{
@@ -202,6 +214,14 @@ const InfiniteCarousel = ({ openGallerySwiper, setOpenGallerySwiper }) => {
         >
           South Africa
         </p>
+        <button className=' cursor-pointer flex gap-2 hover:gap-3 transition-all duration-300 pb-10 uppercase '>
+          <h2 className='cursor-pointer!'>
+          Next
+          </h2>
+          <p className="cursor-pointer!">
+           →
+          </p>
+        </button>
       </div>
 
     </div>

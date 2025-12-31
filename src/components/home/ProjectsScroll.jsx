@@ -148,7 +148,7 @@ const ProjectsScroll = () => {
     return (
         <div
             ref={containerRef}
-            className="desktp_wrk_pren overflow-hidden relative w-full h-screen text-center center"
+            className="desktp_wrk_pren overflow-hidden relative z-[40] w-full h-screen text-center center"
         >
             <div className=" last_vec absolute z-40 top-0 left-0 opacity-0  pointer-events-none flex  items-center w-full justify-center h-screen">
                 <canvas
@@ -167,7 +167,7 @@ const ProjectsScroll = () => {
             <div className="rot_circ_paren rounded-full  border-[1px] border-[#18293A] origin-center translate-x-[30%] translate-y-[10%] absolute z-[-1] w-[25vw]  aspect-square">
                 <div className="size-3 top-0 left-1/2 absolute rounded-full -translate-y-1.5 bg-[#18293A] "></div>
             </div>
-            <h2 className=" project_center_txt absolute text-4xl uppercase w-[50%] text-[#18293A]">
+            <h2 className=" project_center_txt absolute text-5xl uppercase w-[50%] text-[#18293A]">
                 Curiosity, friction, iteration: <br />
                 The machinery of my design
             </h2>
