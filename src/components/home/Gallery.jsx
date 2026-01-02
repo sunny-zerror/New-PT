@@ -50,14 +50,39 @@ const Gallery = () => {
         }
     }, [activeIndex]);
 
+    useEffect(() => {
+
+        var tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: ".gallery_container",
+                start: "top 50%",
+                toggleActions: "play none none reverse"
+            }
+        })
+
+        tl.to(".galry_card", {
+            opacity: 1,
+            scale: 1,
+            duration: 0.6,
+            ease: "power3.out",
+            stagger: {
+                each: 0.03,
+                from: "random", 
+            },
+        })
+
+
+    }, [])
+
+
 
 
 
 
     return (
-        <>  
+        <>
 
-            <InfiniteCarousel openGallerySwiper={openGallerySwiper} setOpenGallerySwiper={setOpenGallerySwiper}/>
+            <InfiniteCarousel openGallerySwiper={openGallerySwiper} setOpenGallerySwiper={setOpenGallerySwiper} />
 
             <div ref={containerRef} className="gallery_container relative z-[10] bg-[#18293A]">
                 <div
@@ -70,6 +95,7 @@ const Gallery = () => {
                                 {String(activeIndex + 1).padStart(2, "0")}
                             </p>
                             <h2>{galleryData[activeIndex].title}</h2>
+                            <p className="text-sm capitalize underline">Explore</p>
                         </div>
                     )}
                 </div>
@@ -86,8 +112,8 @@ const Gallery = () => {
                             {galleryData.map((item, i) => (
                                 <a
                                     key={i}
-                                    className="relative  p-[12vw] shrink-0"
-                                    onClick={()=>setOpenGallerySwiper(true)}
+                                    className=" galry_card cursor-pointer  opacity-0 scale-[.7] relative  p-[12vw] shrink-0"
+                                    onClick={() => setOpenGallerySwiper(true)}
                                     onMouseEnter={() => setActiveIndex(i)}
                                     onMouseLeave={() => setActiveIndex(null)}
                                 >

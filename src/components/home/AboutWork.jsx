@@ -32,10 +32,14 @@ const AboutWork = () => {
             },
         })
         paralex_tl.to(".split_txt_about", {
-            y: 500,
             ease: "linear",
             opacity: 0,
+            duration:.25
         })
+        .to(".split_txt_about", {
+            y: 500,
+            ease: "linear",
+        }, "<")
 
         const tl2 = gsap.timeline({
             scrollTrigger: {
@@ -103,7 +107,7 @@ const AboutWork = () => {
             ease: "expo.out",
             duration: 1,
             stagger: 0.2
-        }, "<")
+        }, "<+=0.5")
         tl.to(".tin_line_ver", {
             height: "100%",
             ease: "expo.out",

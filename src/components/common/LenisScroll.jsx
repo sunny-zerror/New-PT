@@ -16,11 +16,12 @@ const LenisScroll = ({ children }) => {
       wheelMultiplier: 1,
       touchMultiplier: 1,
       infinite: false,
-    })
+    });
 
     lenisRef.current = lenis;
-
     window.lenis = lenis;
+
+    lenis.scrollTo(0, { immediate: true });
 
     const raf = (time) => {
       lenis.raf(time);
