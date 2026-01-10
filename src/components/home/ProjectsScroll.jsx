@@ -24,7 +24,7 @@ const ProjectsScroll = () => {
     const canvasRef = useRef(null);
     const frameRef = useRef(0);
     const imageCache = useRef({});
-    const totalFrames = 114;
+    const totalFrames = 77;
 
 
     useEffect(() => {
@@ -35,8 +35,8 @@ const ProjectsScroll = () => {
 
         let loaded = 0;
         for (let i = 1; i < totalFrames; i++) {
-            const padded = String(i).padStart(4, '0');
-            const src = `/images/frames/${padded}.png`;
+            const padded = String(i).padStart(5, '0');
+            const src = `/images/video_frame/frame${padded}.png`;
             const img = new Image();
             img.src = src;
             img.onload = () => {
@@ -135,7 +135,7 @@ const ProjectsScroll = () => {
         tl.to(frameRef, {
             current: totalFrames - 1,
             snap: 'current',
-            duration: 6,
+            duration: 8,
             onUpdate: () => {
                 drawFrame(Math.round(frameRef.current));
             }
@@ -185,6 +185,8 @@ const ProjectsScroll = () => {
                     style={{ display: 'block', pointerEvents: 'none' }}
                 />
             </div>
+
+            
         </div>
     );
 };

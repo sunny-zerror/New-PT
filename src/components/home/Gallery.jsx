@@ -55,7 +55,7 @@ const Gallery = () => {
         var tl = gsap.timeline({
             scrollTrigger: {
                 trigger: ".gallery_container",
-                start: "top 50%",
+                start: "top 99%",
                 toggleActions: "play none none reverse"
             }
         })
@@ -84,7 +84,7 @@ const Gallery = () => {
 
             <InfiniteCarousel openGallerySwiper={openGallerySwiper} setOpenGallerySwiper={setOpenGallerySwiper} />
 
-            <div ref={containerRef} className="gallery_container relative z-[10] bg-[#18293A]">
+            <div ref={containerRef} className="gallery_container relative z-[100] -mt-1 bg-[#18293A]">
                 <div
                     ref={textBoxRef}
                     className="gallry_txt_box text-[#ffffff] pointer-events-none fixed  uppercase text-center center text-5xl   z-20 w-full top-1/2 -translate-y-1/2 opacity-0"
