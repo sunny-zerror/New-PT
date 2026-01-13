@@ -24,7 +24,7 @@ const ProjectsScroll = () => {
     const canvasRef = useRef(null);
     const frameRef = useRef(0);
     const imageCache = useRef({});
-    const totalFrames = 95;
+    const totalFrames = 222;
 
 
     useEffect(() => {

@@ -3,7 +3,7 @@ import React from 'react'
 const Footer = () => {
   return (
     <>
-      <div className="w-full  text-white px-20 pb-10 h-[50vw] items-end overflow-hidden  flex bg-[#18293A] ">
+      <div className="w-full  text-white px-20 pb-10 h-[50vw] items-end overflow-hidden  flex bg-[#0A1B2F] ">
         <div className="w-[65%]">
         {/* <img className='cover' src="https://ghuynguyen.vercel.app/images/Contact/Contact.png" alt="" /> */}
           <h2 className='text-5xl capitalize vvds_light w-[60%]'>Bridging the gap between humans and digital experiences</h2>
