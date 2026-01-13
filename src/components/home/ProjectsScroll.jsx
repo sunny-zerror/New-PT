@@ -135,7 +135,7 @@ const ProjectsScroll = () => {
         tl.to(frameRef, {
             current: totalFrames - 1,
             snap: 'current',
-            duration: 8,
+            duration: 6,
             onUpdate: () => {
                 drawFrame(Math.round(frameRef.current));
             }
