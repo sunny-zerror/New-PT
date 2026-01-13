@@ -24,7 +24,7 @@ const ProjectsScroll = () => {
     const canvasRef = useRef(null);
     const frameRef = useRef(0);
     const imageCache = useRef({});
-    const totalFrames = 77;
+    const totalFrames = 95;
 
 
     useEffect(() => {
@@ -35,8 +35,8 @@ const ProjectsScroll = () => {
 
         let loaded = 0;
         for (let i = 1; i < totalFrames; i++) {
-            const padded = String(i).padStart(5, '0');
-            const src = `/images/video_frame/frame${padded}.png`;
+            const padded = String(i).padStart(3, '0');
+            const src = `/images/video_frame/${padded}.webp`;
             const img = new Image();
             img.src = src;
             img.onload = () => {
